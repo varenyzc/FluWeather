@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluweather/app/data/theme/app_theme.dart';
 import 'package:fluweather/app/modules/place/widgets/text_field_container.dart';
 
-class RoundedInputField extends StatelessWidget implements PreferredSizeWidget {
+class RoundedInputField extends StatelessWidget {
 
   final String hintText;
   final IconData icon;
@@ -26,10 +26,5 @@ class RoundedInputField extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
     );
-  }
-
-  @override
-  Size get preferredSize {
-
   }
 }
