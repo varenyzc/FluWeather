@@ -30,7 +30,8 @@ class Body extends GetView<HomeController> {
                 sliver: SliverList(
                   delegate: SliverChildListDelegate([
                     _buildNow(),
-                    _buildForecast()
+                    _buildForecast(),
+                    _buildLifeIndex(),
                   ]),
                 ),
               )
@@ -141,36 +142,7 @@ class Body extends GetView<HomeController> {
   }
 
   Widget _buildForecast() {
-    return Padding(
-        padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-        child: Container(
-          child: Card(
-            elevation: 5,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 20, left: 15),
-                  child: Text(
-                    "预报",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black
-                    ),
-                  ),
-                ),
-                _buildForecastList()
-              ],
-            ),
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            color: Colors.white,
-          ),
-        ),
-    );
+    return _buildCard("预报", _buildForecastList());
   }
 
   Widget _buildForecastList() {
@@ -183,6 +155,7 @@ class Body extends GetView<HomeController> {
                 return _buildForecastItem(index);
               },
               shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics()
           );
         }
       }
@@ -232,6 +205,110 @@ class Body extends GetView<HomeController> {
             flex: 3,
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildLifeIndex() {
+    return Padding(
+      child: _buildCard("生活指数", _buildLifeIndexGrid()),
+      padding: EdgeInsets.only(bottom: 15),
+    );
+  }
+
+  Widget _buildLifeIndexGrid() {
+    return Obx(() {
+      if(_dailyResponse.value != null) {
+        if(_dailyResponse.value.result.daily.lifeIndex != null) {
+          var lifeIndex = _dailyResponse.value.result.daily.lifeIndex;
+          return GridView.count(
+              crossAxisCount: 2,
+              childAspectRatio: 2.5,
+              children: [
+                _buildLifeIndexItem(R.assetsImagesIcColdrisk, "感冒", lifeIndex.coldRisk[0].desc),
+                _buildLifeIndexItem(R.assetsImagesIcDressing, "穿衣", lifeIndex.dressing[0].desc),
+                _buildLifeIndexItem(R.assetsImagesIcUltraviolet, "实时紫外线", lifeIndex.ultraviolet[0].desc),
+                _buildLifeIndexItem(R.assetsImagesIcCarwashing, "洗车", lifeIndex.carWashing[0].desc),
+              ],
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics()
+          );
+        }
+      }
+
+      return Text("");
+    });
+  }
+
+  Widget _buildLifeIndexItem(String icon, String title, String info) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 30, right: 20),
+          child: Image(
+            image: AssetImage(icon),
+            width: 40,
+            height: 40,
+          ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              title,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 12
+              ),
+            ),
+            Text(
+              info,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black
+              ),
+            )
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget _buildCard(String title, Widget child) {
+    return Padding(
+      padding: EdgeInsets.only(left: 15, right: 15, top: 15),
+      child: Container(
+        child: Card(
+          elevation: 5,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 20, left: 15),
+                child: Text(
+                  title,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black
+                  ),
+                ),
+              ),
+              child
+            ],
+          ),
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4),
+          color: Colors.white,
+        ),
       ),
     );
   }

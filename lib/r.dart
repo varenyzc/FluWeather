@@ -11,6 +11,8 @@ class R {
   static final String assetsImagesIcDressing = 'assets/images/ic_dressing.png';
   /// ![](http://127.0.0.1:666/assets/images/ic_clear_day.png)
   static final String assetsImagesIcClearDay = 'assets/images/ic_clear_day.png';
+  /// ![](http://127.0.0.1:666/assets/images/ic_ultraviolet.png)
+  static final String assetsImagesIcUltraviolet = 'assets/images/ic_ultraviolet.png';
   /// ![](http://127.0.0.1:666/assets/images/ic_thunder_shower.png)
   static final String assetsImagesIcThunderShower = 'assets/images/ic_thunder_shower.png';
   /// ![](http://127.0.0.1:666/assets/images/ic_home.png)

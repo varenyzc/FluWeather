@@ -67,6 +67,7 @@ flutter:
     - assets/images/ic_partly_cloud_day.png
     - assets/images/ic_dressing.png
     - assets/images/ic_clear_day.png
+    - assets/images/ic_ultraviolet.png
     - assets/images/ic_thunder_shower.png
     - assets/images/ic_home.png
     - assets/images/ic_light_haze.png
