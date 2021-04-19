@@ -123,14 +123,16 @@ class Body extends GetView<HomeController> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            _realtimeResponse.value == null ? "11℃" : "${_realtimeResponse.value.result.realtime.temperature.toInt().toString()} ℃",
+            _realtimeResponse.value == null ? "11℃" :
+            "${_realtimeResponse.value.result.realtime.temperature.toInt().toString()} ℃",
             style: TextStyle(
                 fontSize: 70,
                 color: Colors.white
             ),
           ),
           Text(
-            _realtimeResponse.value == null ? "晴  |  空气指数24" : "${getSky(_realtimeResponse.value.result.realtime.skycon).info}  |  空气指数 ${_realtimeResponse.value.result.realtime.airQuality.aqi.chn.toInt().toString()}",
+            _realtimeResponse.value == null ? "晴  |  空气指数 24" :
+            "${getSky(_realtimeResponse.value.result.realtime.skycon).info}  |  空气指数 ${_realtimeResponse.value.result.realtime.airQuality.aqi.chn.toInt().toString()}",
             style: TextStyle(
                 fontSize: 18,
                 color: Colors.white
