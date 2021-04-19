@@ -152,6 +152,7 @@ class Body extends GetView<HomeController> {
       if(_dailyResponse.value != null) {
         if(_dailyResponse.value.result.daily.temperature.length > 0) {
           return ListView.builder(
+              padding: EdgeInsets.zero,
               itemCount: _dailyResponse.value.result.daily.temperature.length,
               itemBuilder: (context, index) {
                 return _buildForecastItem(index);
@@ -224,6 +225,7 @@ class Body extends GetView<HomeController> {
         if(_dailyResponse.value.result.daily.lifeIndex != null) {
           var lifeIndex = _dailyResponse.value.result.daily.lifeIndex;
           return GridView.count(
+              padding: EdgeInsets.zero,
               crossAxisCount: 2,
               childAspectRatio: 2.5,
               children: [
@@ -293,7 +295,7 @@ class Body extends GetView<HomeController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 20, left: 15),
+                padding: EdgeInsets.only(top: 20, left: 15, bottom: 15),
                 child: Text(
                   title,
                   textAlign: TextAlign.left,
