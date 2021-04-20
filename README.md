@@ -1,6 +1,6 @@
 # fluweather
 
-SunnyWeather writed by Flutter.
+SunnyWeather written by Flutter.
 
 ## Getting Started
 
