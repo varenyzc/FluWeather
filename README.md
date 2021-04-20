@@ -1,6 +1,6 @@
 # fluweather
 
-coolweather rewrite by Flutter.
+SunnyWeather writed by Flutter.
 
 ## Getting Started
 
