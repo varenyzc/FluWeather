@@ -28,7 +28,6 @@ dependencies:
   dio: ^3.0.10
   dio_cookie_manager: ^1.0.0
   dio_http_cache: ^0.2.11
-  provider: #latest version
   flukit: #latest version
   cached_network_image: #latest version
   fluttertoast: ^3.1.3

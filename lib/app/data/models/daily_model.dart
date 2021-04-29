@@ -99,6 +99,7 @@ class Temperature {
     final data = <String, dynamic>{};
     data['max'] = max;
     data['min'] = min;
+    return data;
   }
 }
 

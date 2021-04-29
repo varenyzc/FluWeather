@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 
 import '../../../../r.dart';
 
+// ignore: must_be_immutable
 class Body extends GetView<HomeController> {
   
   var _place = Places().obs;
